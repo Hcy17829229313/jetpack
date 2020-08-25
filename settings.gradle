@@ -1,0 +1,4 @@
+include ':mvplibrary'
+include ':httplibrary'
+include ':app'
+rootProject.name = "jetpack"
