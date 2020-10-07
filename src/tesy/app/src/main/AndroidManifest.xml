@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tesy">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
+        android:name=".app.ShopApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/anim_banana_0001"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".music.MusicActivity"></activity>
+        <activity android:name=".test.TestView4Activity"></activity>
+        <activity android:name=".testActivity"></activity>
+        <activity android:name=".egui.LookGrilActivity" />
+        <activity android:name=".egui.LookRecActivity" />
+        <activity android:name=".egui.OneActivity" />
+        <activity android:name=".egui.LookActivity" />
+        <activity android:name=".egui.BabyLisActivity" />
+        <activity android:name=".egui.EgCountActivity" />
+        <activity android:name=".egui.EgMainActivity">
+
+            <!-- KAISHI ZAO ZHE LI -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".egui.EgeActivity" />
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".MainActivity" />
+
+        <service android:name=".music.MusicServicer"/>
     </application>
 
 </manifest>

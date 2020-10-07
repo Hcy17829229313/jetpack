@@ -104,6 +104,7 @@ public class HomeFragment extends Fragment {
         mRecycler = inflate.findViewById(R.id.mRecycler);
         mRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         homeBeans = new ArrayList<>();
         homeAdapter = new HomeAdapter(getActivity(), homeBeans);
         mRecycler.setAdapter(homeAdapter);

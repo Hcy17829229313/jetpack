@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.hcy.jetpack.MyApp.bean.CollectionBean;
 import com.hcy.jetpack.MyApp.bean.SeekBean;
 import com.hcy.jetpack.R;
 
@@ -21,9 +22,9 @@ import java.util.List;
 public class SubAdapter extends RecyclerView.Adapter {
 
     Context baseContext;
-    List<SeekBean.DataBean> dataBeans;
+    List<CollectionBean> dataBeans;
 
-    public SubAdapter(Context baseContext, List<SeekBean.DataBean> dataBeans) {
+    public SubAdapter(Context baseContext, List<CollectionBean> dataBeans) {
         this.baseContext = baseContext;
         this.dataBeans = dataBeans;
     }
@@ -59,7 +60,7 @@ public class SubAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        SeekBean.DataBean dataBean = dataBeans.get(position);
+        CollectionBean dataBean = dataBeans.get(position);
 
         int itemViewType = getItemViewType(position);
         switch (itemViewType) {

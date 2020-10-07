@@ -14,21 +14,28 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.greendaodemo.db.CollectionBeanDao;
 import com.google.gson.JsonElement;
 import com.hcy.httplibrary.client.HttpClient;
 import com.hcy.httplibrary.utils.JsonUtils;
 import com.hcy.httplibrary.utils.LogUtils;
 import com.hcy.jetpack.MyApp.adapter.SeekSubAdapter;
+import com.hcy.jetpack.MyApp.bean.CollectionBean;
 import com.hcy.jetpack.MyApp.bean.SeekBean;
 import com.hcy.jetpack.MyApp.contract.SeekContract;
 import com.hcy.jetpack.MyApp.presenter.SeekPresenter;
 import com.hcy.jetpack.MyApp.ui.SubActivity;
 import com.hcy.jetpack.R;
 import com.hcy.jetpack.app.HttpCallBack;
+import com.hcy.jetpack.app.MyApp;
 import com.hcy.mvplibrary.base.BaseMvpFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,13 +44,14 @@ import butterknife.Unbinder;
 public class SubFragment extends Fragment {
     RecyclerView SeekRlv;
     Unbinder unbinder;
-    private ArrayList<SeekBean.DataBean> arrayList;
+    private ArrayList<CollectionBean> arrayList;
     private SeekSubAdapter seekSubAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.sub_item, null);
+        EventBus.getDefault().register(this);
         initView(inflate);
         initData();
         return inflate;
@@ -95,12 +103,23 @@ public class SubFragment extends Fragment {
 
         seekSubAdapter.setItemClick(new SeekSubAdapter.ItemClick() {
             @Override
-            public void Click(SeekBean.DataBean dataBean) {
+            public void Click(CollectionBean dataBean) {
                 Intent intent = new Intent(getActivity(), SubActivity.class);
                 intent.putExtra("id", dataBean.getId());
                 startActivity(intent);
             }
         });
+    }
+
+    @Subscribe
+    public void getDao(CollectionBean bean){
+        for (CollectionBean collectionBean : arrayList) {
+              if(bean.getTitle().equals(collectionBean.getTitle())){
+                    collectionBean.setClick(false);
+                    seekSubAdapter.notifyDataSetChanged();
+              }
+        }
+
     }
 /*
     @Override

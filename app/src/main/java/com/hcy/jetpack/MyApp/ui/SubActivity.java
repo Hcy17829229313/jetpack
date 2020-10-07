@@ -12,6 +12,7 @@ import com.hcy.httplibrary.client.HttpClient;
 import com.hcy.httplibrary.utils.JsonUtils;
 import com.hcy.httplibrary.utils.LogUtils;
 import com.hcy.jetpack.MyApp.adapter.SubAdapter;
+import com.hcy.jetpack.MyApp.bean.CollectionBean;
 import com.hcy.jetpack.MyApp.bean.SeekBean;
 import com.hcy.jetpack.R;
 import com.hcy.jetpack.app.HttpCallBack;
@@ -22,7 +23,7 @@ import java.util.HashMap;
 public class SubActivity extends AppCompatActivity {
 
     private RecyclerView mrlv_sub;
-    private ArrayList<SeekBean.DataBean> beanArrayList;
+    private ArrayList<CollectionBean> beanArrayList;
     private SubAdapter subAdapter;
     private int id;
     private RecyclerView mrlv_sub2;

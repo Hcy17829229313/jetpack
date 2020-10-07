@@ -39,7 +39,8 @@
         android:layout_height="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_70"
         android:layout_marginTop="@dimen/dp_30"
-        android:background="@color/color_theme"
+        android:background="@drawable/btn_selector"
+        android:textColor="@color/color_white"
         android:text="关注" />
 
 </LinearLayout>
